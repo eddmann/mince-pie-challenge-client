@@ -1,0 +1,12 @@
+.Browse {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.Browse .Pie {
+  max-width: 266px !important;
+}
+
+.Browse .Pie .Rating {
+  margin-left: -3px;
+}

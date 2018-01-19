@@ -1,0 +1,12 @@
+.View {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.View .Pie {
+  max-width: 500px !important;
+}
+
+.View .Pie .Rating {
+  margin-top: 6px;
+}
