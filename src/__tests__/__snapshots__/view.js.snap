@@ -1,0 +1,625 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`remove mince pie 1`] = `
+<div
+  className="Browse"
+>
+  <CardGroup
+    doubling={true}
+    itemsPerRow={4}
+  >
+    <div
+      className="ui doubling four cards"
+    />
+  </CardGroup>
+</div>
+`;
+
+exports[`view own mince pie 1`] = `
+Array [
+  <Card
+    centered={true}
+    className="Pie"
+    fluid={true}
+>
+    <div
+        className="ui centered fluid card Pie"
+        onClick={[Function]}
+    >
+        <Image
+            as="img"
+            src="photo.url"
+            ui={true}
+        >
+            <img
+                className="ui image"
+                src="photo.url"
+            />
+        </Image>
+        <CardContent>
+            <div
+                className="content"
+            >
+                <CardHeader
+                    content="Awesome Mince Pie"
+                >
+                    <div
+                        className="header"
+                    >
+                        Awesome Mince Pie
+                    </div>
+                </CardHeader>
+                <CardDescription>
+                    <div
+                        className="description"
+                    >
+                        Rated 
+                        0
+                        /5 from 
+                        0
+                         reviews
+                    </div>
+                </CardDescription>
+            </div>
+        </CardContent>
+        <CardContent
+            extra={true}
+        >
+            <div
+                className="extra content"
+            >
+                <Button
+                    as="button"
+                    floated="right"
+                    loading={false}
+                    negative={true}
+                    onClick={[Function]}
+                >
+                    <button
+                        className="ui negative right floated button"
+                        onClick={[Function]}
+                        role="button"
+                    >
+                        Remove
+                    </button>
+                </Button>
+            </div>
+        </CardContent>
+    </div>
+</Card>,
+  <div
+    className="ui centered fluid card Pie"
+    onClick={[Function]}
+>
+    <Image
+        as="img"
+        src="photo.url"
+        ui={true}
+    >
+        <img
+            className="ui image"
+            src="photo.url"
+        />
+    </Image>
+    <CardContent>
+        <div
+            className="content"
+        >
+            <CardHeader
+                content="Awesome Mince Pie"
+            >
+                <div
+                    className="header"
+                >
+                    Awesome Mince Pie
+                </div>
+            </CardHeader>
+            <CardDescription>
+                <div
+                    className="description"
+                >
+                    Rated 
+                    0
+                    /5 from 
+                    0
+                     reviews
+                </div>
+            </CardDescription>
+        </div>
+    </CardContent>
+    <CardContent
+        extra={true}
+    >
+        <div
+            className="extra content"
+        >
+            <Button
+                as="button"
+                floated="right"
+                loading={false}
+                negative={true}
+                onClick={[Function]}
+            >
+                <button
+                    className="ui negative right floated button"
+                    onClick={[Function]}
+                    role="button"
+                >
+                    Remove
+                </button>
+            </Button>
+        </div>
+    </CardContent>
+</div>,
+]
+`;
+
+exports[`view public mince pie 1`] = `
+Array [
+  <Card
+    centered={true}
+    className="Pie"
+    fluid={true}
+>
+    <div
+        className="ui centered fluid card Pie"
+        onClick={[Function]}
+    >
+        <Image
+            as="img"
+            src="photo.url"
+            ui={true}
+        >
+            <img
+                className="ui image"
+                src="photo.url"
+            />
+        </Image>
+        <CardContent>
+            <div
+                className="content"
+            >
+                <CardHeader
+                    content="Awesome Mince Pie"
+                >
+                    <div
+                        className="header"
+                    >
+                        Awesome Mince Pie
+                    </div>
+                </CardHeader>
+                <CardDescription>
+                    <div
+                        className="description"
+                    >
+                        Rated 
+                        0
+                        /5 from 
+                        0
+                         reviews
+                    </div>
+                </CardDescription>
+            </div>
+        </CardContent>
+    </div>
+</Card>,
+  <div
+    className="ui centered fluid card Pie"
+    onClick={[Function]}
+>
+    <Image
+        as="img"
+        src="photo.url"
+        ui={true}
+    >
+        <img
+            className="ui image"
+            src="photo.url"
+        />
+    </Image>
+    <CardContent>
+        <div
+            className="content"
+        >
+            <CardHeader
+                content="Awesome Mince Pie"
+            >
+                <div
+                    className="header"
+                >
+                    Awesome Mince Pie
+                </div>
+            </CardHeader>
+            <CardDescription>
+                <div
+                    className="description"
+                >
+                    Rated 
+                    0
+                    /5 from 
+                    0
+                     reviews
+                </div>
+            </CardDescription>
+        </div>
+    </CardContent>
+</div>,
+]
+`;
+
+exports[`view rateable mince pie 1`] = `
+Array [
+  <Card
+    centered={true}
+    className="Pie"
+    fluid={true}
+>
+    <div
+        className="ui centered fluid card Pie"
+        onClick={[Function]}
+    >
+        <Image
+            as="img"
+            src="photo.url"
+            ui={true}
+        >
+            <img
+                className="ui image"
+                src="photo.url"
+            />
+        </Image>
+        <CardContent>
+            <div
+                className="content"
+            >
+                <CardHeader
+                    content="Awesome Mince Pie"
+                >
+                    <div
+                        className="header"
+                    >
+                        Awesome Mince Pie
+                    </div>
+                </CardHeader>
+                <CardDescription>
+                    <div
+                        className="description"
+                    >
+                        Rated 
+                        0
+                        /5 from 
+                        0
+                         reviews
+                    </div>
+                </CardDescription>
+            </div>
+        </CardContent>
+        <CardContent
+            extra={true}
+        >
+            <div
+                className="extra content"
+            >
+                <Rating
+                    clearable="auto"
+                    disabled={false}
+                    maxRating={5}
+                    onRate={[Function]}
+                    size="huge"
+                >
+                    <div
+                        className="ui huge rating"
+                        onMouseLeave={[Function]}
+                        role="radiogroup"
+                    >
+                        <RatingIcon
+                            active={false}
+                            aria-checked={false}
+                            aria-posinset={1}
+                            aria-setsize={5}
+                            as="i"
+                            index={0}
+                            key="0"
+                            onClick={[Function]}
+                            onMouseEnter={[Function]}
+                            selected={false}
+                        >
+                            <i
+                                aria-checked={false}
+                                aria-posinset={1}
+                                aria-setsize={5}
+                                className="icon"
+                                onClick={[Function]}
+                                onKeyUp={[Function]}
+                                onMouseEnter={[Function]}
+                                role="radio"
+                                tabIndex={0}
+                            />
+                        </RatingIcon>
+                        <RatingIcon
+                            active={false}
+                            aria-checked={false}
+                            aria-posinset={2}
+                            aria-setsize={5}
+                            as="i"
+                            index={1}
+                            key="1"
+                            onClick={[Function]}
+                            onMouseEnter={[Function]}
+                            selected={false}
+                        >
+                            <i
+                                aria-checked={false}
+                                aria-posinset={2}
+                                aria-setsize={5}
+                                className="icon"
+                                onClick={[Function]}
+                                onKeyUp={[Function]}
+                                onMouseEnter={[Function]}
+                                role="radio"
+                                tabIndex={0}
+                            />
+                        </RatingIcon>
+                        <RatingIcon
+                            active={false}
+                            aria-checked={false}
+                            aria-posinset={3}
+                            aria-setsize={5}
+                            as="i"
+                            index={2}
+                            key="2"
+                            onClick={[Function]}
+                            onMouseEnter={[Function]}
+                            selected={false}
+                        >
+                            <i
+                                aria-checked={false}
+                                aria-posinset={3}
+                                aria-setsize={5}
+                                className="icon"
+                                onClick={[Function]}
+                                onKeyUp={[Function]}
+                                onMouseEnter={[Function]}
+                                role="radio"
+                                tabIndex={0}
+                            />
+                        </RatingIcon>
+                        <RatingIcon
+                            active={false}
+                            aria-checked={false}
+                            aria-posinset={4}
+                            aria-setsize={5}
+                            as="i"
+                            index={3}
+                            key="3"
+                            onClick={[Function]}
+                            onMouseEnter={[Function]}
+                            selected={false}
+                        >
+                            <i
+                                aria-checked={false}
+                                aria-posinset={4}
+                                aria-setsize={5}
+                                className="icon"
+                                onClick={[Function]}
+                                onKeyUp={[Function]}
+                                onMouseEnter={[Function]}
+                                role="radio"
+                                tabIndex={0}
+                            />
+                        </RatingIcon>
+                        <RatingIcon
+                            active={false}
+                            aria-checked={false}
+                            aria-posinset={5}
+                            aria-setsize={5}
+                            as="i"
+                            index={4}
+                            key="4"
+                            onClick={[Function]}
+                            onMouseEnter={[Function]}
+                            selected={false}
+                        >
+                            <i
+                                aria-checked={false}
+                                aria-posinset={5}
+                                aria-setsize={5}
+                                className="icon"
+                                onClick={[Function]}
+                                onKeyUp={[Function]}
+                                onMouseEnter={[Function]}
+                                role="radio"
+                                tabIndex={0}
+                            />
+                        </RatingIcon>
+                    </div>
+                </Rating>
+            </div>
+        </CardContent>
+    </div>
+</Card>,
+  <div
+    className="ui centered fluid card Pie"
+    onClick={[Function]}
+>
+    <Image
+        as="img"
+        src="photo.url"
+        ui={true}
+    >
+        <img
+            className="ui image"
+            src="photo.url"
+        />
+    </Image>
+    <CardContent>
+        <div
+            className="content"
+        >
+            <CardHeader
+                content="Awesome Mince Pie"
+            >
+                <div
+                    className="header"
+                >
+                    Awesome Mince Pie
+                </div>
+            </CardHeader>
+            <CardDescription>
+                <div
+                    className="description"
+                >
+                    Rated 
+                    0
+                    /5 from 
+                    0
+                     reviews
+                </div>
+            </CardDescription>
+        </div>
+    </CardContent>
+    <CardContent
+        extra={true}
+    >
+        <div
+            className="extra content"
+        >
+            <Rating
+                clearable="auto"
+                disabled={false}
+                maxRating={5}
+                onRate={[Function]}
+                size="huge"
+            >
+                <div
+                    className="ui huge rating"
+                    onMouseLeave={[Function]}
+                    role="radiogroup"
+                >
+                    <RatingIcon
+                        active={false}
+                        aria-checked={false}
+                        aria-posinset={1}
+                        aria-setsize={5}
+                        as="i"
+                        index={0}
+                        key="0"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        selected={false}
+                    >
+                        <i
+                            aria-checked={false}
+                            aria-posinset={1}
+                            aria-setsize={5}
+                            className="icon"
+                            onClick={[Function]}
+                            onKeyUp={[Function]}
+                            onMouseEnter={[Function]}
+                            role="radio"
+                            tabIndex={0}
+                        />
+                    </RatingIcon>
+                    <RatingIcon
+                        active={false}
+                        aria-checked={false}
+                        aria-posinset={2}
+                        aria-setsize={5}
+                        as="i"
+                        index={1}
+                        key="1"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        selected={false}
+                    >
+                        <i
+                            aria-checked={false}
+                            aria-posinset={2}
+                            aria-setsize={5}
+                            className="icon"
+                            onClick={[Function]}
+                            onKeyUp={[Function]}
+                            onMouseEnter={[Function]}
+                            role="radio"
+                            tabIndex={0}
+                        />
+                    </RatingIcon>
+                    <RatingIcon
+                        active={false}
+                        aria-checked={false}
+                        aria-posinset={3}
+                        aria-setsize={5}
+                        as="i"
+                        index={2}
+                        key="2"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        selected={false}
+                    >
+                        <i
+                            aria-checked={false}
+                            aria-posinset={3}
+                            aria-setsize={5}
+                            className="icon"
+                            onClick={[Function]}
+                            onKeyUp={[Function]}
+                            onMouseEnter={[Function]}
+                            role="radio"
+                            tabIndex={0}
+                        />
+                    </RatingIcon>
+                    <RatingIcon
+                        active={false}
+                        aria-checked={false}
+                        aria-posinset={4}
+                        aria-setsize={5}
+                        as="i"
+                        index={3}
+                        key="3"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        selected={false}
+                    >
+                        <i
+                            aria-checked={false}
+                            aria-posinset={4}
+                            aria-setsize={5}
+                            className="icon"
+                            onClick={[Function]}
+                            onKeyUp={[Function]}
+                            onMouseEnter={[Function]}
+                            role="radio"
+                            tabIndex={0}
+                        />
+                    </RatingIcon>
+                    <RatingIcon
+                        active={false}
+                        aria-checked={false}
+                        aria-posinset={5}
+                        aria-setsize={5}
+                        as="i"
+                        index={4}
+                        key="4"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        selected={false}
+                    >
+                        <i
+                            aria-checked={false}
+                            aria-posinset={5}
+                            aria-setsize={5}
+                            className="icon"
+                            onClick={[Function]}
+                            onKeyUp={[Function]}
+                            onMouseEnter={[Function]}
+                            role="radio"
+                            tabIndex={0}
+                        />
+                    </RatingIcon>
+                </div>
+            </Rating>
+        </div>
+    </CardContent>
+</div>,
+]
+`;
