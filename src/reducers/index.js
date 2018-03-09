@@ -62,9 +62,9 @@ const successMessage = (state = '', action) => {
     case 'LOGOUT_SUCCESS':
       return 'Successfully logged out.';
     case 'ADD_PIE_SUCCESS':
-      return 'Successfully added a new pie\'s details.';
+      return "Successfully added a new pie's details.";
     case 'UPLOAD_PHOTO_SUCCESS':
-      return 'Successfully uploaded a new pie\'s photo.';
+      return "Successfully uploaded a new pie's photo.";
     case 'RATE_PIE_SUCCESS':
       return 'Successfully rated the pie.';
     case 'REMOVE_PIE_SUCCESS':
@@ -93,19 +93,12 @@ const initPhotoState = {
   error: '',
   isProcessing: false,
   pendingPieId: '',
-  photoRequestUrl: '',
   photoUploadUrl: '',
 };
 const photo = (state = initPhotoState, action) => {
   switch (action.type) {
     case 'ADD_PIE_SUCCESS':
       return { ...state, pendingPieId: action.pendingPieId, photoRequestUrl: action.photoRequestUrl };
-    case 'REQUEST_PHOTO_UPLOAD':
-      return { ...state, isProcessing: true, error: '' };
-    case 'REQUEST_PHOTO_UPLOAD_SUCCESS':
-      return { ...state, isProcessing: false, photoUploadUrl: action.photoUploadUrl, error: '' };
-    case 'REQUEST_PHOTO_UPLOAD_FAILURE':
-      return { ...state, isProcessing: false, error: action.error };
     case 'UPLOAD_PHOTO':
       return { ...state, isProcessing: true, error: '' };
     case 'UPLOAD_PHOTO_SUCCESS':

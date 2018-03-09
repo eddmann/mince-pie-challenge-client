@@ -1,57 +1,60 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
-import { addPie, requestPhotoUpload, uploadPhoto } from '../actions/pie';
+import { addPie, uploadPhoto } from '../actions/pie';
 
 import './Add.css';
 
-class Add extends Component {
+export class Add extends Component {
   static propTypes = {
+    addPie: PropTypes.func.isRequired,
+    uploadPhoto: PropTypes.func.isRequired,
     isSubmitting: PropTypes.bool.isRequired,
     error: PropTypes.string,
     addUrl: PropTypes.string.isRequired,
     pendingPieId: PropTypes.string,
     photoRequestUrl: PropTypes.string,
-    photoUploadUrl: PropTypes.string,
   };
 
-  state = { name: '' };
+  state = {
+    name: '',
+    photo: undefined,
+  };
 
-  onLogin = e => {
+  onAdd = e => {
     e.preventDefault();
     const { name } = this.state;
-    this.props.dispatch(addPie(this.props.addUrl, name));
+    this.props.addPie(this.props.addUrl, name);
   };
 
-  onPhotoUploadRequest = e => {
-    e.preventDefault();
-    const image = this.refs.file.files[0];
-    const fileExtension = image.name.split('.').pop();
-    const contentType = image.type;
-    this.props.dispatch(requestPhotoUpload(this.props.photoRequestUrl, fileExtension, contentType));
-  }
+  onPhotoSelection = e => {
+    this.setState({ photo: e.target.files[0] });
+  };
 
   onPhotoUpload = e => {
     e.preventDefault();
-    const image = this.refs.file.files[0];
-    this.props.dispatch(uploadPhoto(this.props.pendingPieId, this.props.photoUploadUrl, image));
+    this.props.uploadPhoto(this.props.pendingPieId, this.props.photoRequestUrl, this.state.photo);
   };
 
-  onFormUpdate = e =>
-    this.setState({ [e.target.id]: e.target.value });
+  onFormUpdate = e => this.setState({ [e.target.id]: e.target.value });
 
   renderAddForm = () => {
     return (
-      <Form size='large'>
+      <Form size="large">
         <Segment stacked>
           <Form.Input
-            fluid id="name" icon='user' iconPosition='left'
-            placeholder='Name' value={this.state.name}
-            onChange={this.onFormUpdate} />
-          <Button
-            loading={this.props.isSubmitting} fluid color='blue'
-            size='large' onClick={this.onLogin}>Add</Button>
+            fluid
+            id="name"
+            icon="user"
+            iconPosition="left"
+            placeholder="Name"
+            value={this.state.name}
+            onChange={this.onFormUpdate}
+          />
+          <Button loading={this.props.isSubmitting} fluid color="blue" size="large" onClick={this.onAdd}>
+            Add
+          </Button>
         </Segment>
       </Form>
     );
@@ -59,12 +62,19 @@ class Add extends Component {
 
   renderPhotoUploadForm = () => {
     return (
-      <Form size='large'>
+      <Form size="large">
         <Segment stacked>
-          <input type="file" ref="file" onChange={this.onPhotoUploadRequest} />
-          {this.props.photoUploadUrl && <Button
-            loading={this.props.isSubmitting} fluid color='blue'
-            size='large' onClick={this.onPhotoUpload}>Upload</Button>}
+          <input type="file" onChange={this.onPhotoSelection} />
+          <Button
+            disabled={!this.state.photo}
+            loading={this.props.isSubmitting}
+            fluid
+            color="blue"
+            size="large"
+            onClick={this.onPhotoUpload}
+          >
+            Upload
+          </Button>
         </Segment>
       </Form>
     );
@@ -73,9 +83,9 @@ class Add extends Component {
   render() {
     return (
       <div className="Add">
-        <Grid textAlign='center'>
+        <Grid textAlign="center">
           <Grid.Column className="Form">
-            <Header as='h2' color='teal' textAlign='center'>
+            <Header as="h2" color="teal" textAlign="center">
               {this.props.photoRequestUrl ? 'Upload Photo' : 'Add Pie'}
             </Header>
             {this.props.error && <Message error>{this.props.error}</Message>}
@@ -93,7 +103,6 @@ const mapStateToProps = ({ urls, add, photo }) => ({
   addUrl: urls.addUrl,
   pendingPieId: photo.pendingPieId,
   photoRequestUrl: photo.photoRequestUrl,
-  photoUploadUrl: photo.photoUploadUrl,
 });
 
-export default connect(mapStateToProps)(Add);
+export default connect(mapStateToProps, { addPie, uploadPhoto })(Add);

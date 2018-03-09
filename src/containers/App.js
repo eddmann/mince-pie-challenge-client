@@ -5,7 +5,7 @@ import { Container, Message } from 'semantic-ui-react';
 import Routes from '../components/Routes';
 import NavBar from '../components/NavBar';
 import { withRouter } from 'react-router';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout, clearSuccessMessage } from '../actions/user';
 
@@ -14,20 +14,22 @@ import './App.css';
 
 class App extends Component {
   static propTypes = {
+    logout: PropTypes.func.isRequired,
+    clearSuccessMessage: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     successMessage: PropTypes.string,
   };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.successMessage) {
-      setTimeout(() => this.props.dispatch(clearSuccessMessage()), 5000);
+      setTimeout(() => this.props.clearSuccessMessage(), 5000);
     }
   }
 
   onLogout = e => {
     e.preventDefault();
-    this.props.dispatch(logout());
-  }
+    this.props.logout();
+  };
 
   render() {
     const { isAuthenticated, successMessage } = this.props;
@@ -47,4 +49,4 @@ const mapStateToProps = ({ isAuthenticated, successMessage }) => ({
   successMessage,
 });
 
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps, { logout, clearSuccessMessage })(App));

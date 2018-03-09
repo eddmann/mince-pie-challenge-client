@@ -9,6 +9,9 @@ import './View.css';
 
 class View extends Component {
   static propTypes = {
+    fetchPie: PropTypes.func.isRequired,
+    ratePie: PropTypes.func.isRequired,
+    removePie: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
     isRating: PropTypes.bool.isRequired,
     isRemoving: PropTypes.bool.isRequired,
@@ -18,16 +21,16 @@ class View extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(fetchPie(this.props.viewTemplateUrl, this.props.match.params.id));
+    this.props.fetchPie(this.props.viewTemplateUrl, this.props.match.params.id);
   }
 
   onRating = (e, { rating }) => {
     const { pie } = this.props;
-    this.props.dispatch(ratePie(pie.id, this.props.viewTemplateUrl, pie.rateUrl, rating));
+    this.props.ratePie(pie.id, this.props.viewTemplateUrl, pie.rateUrl, rating);
   };
 
   onRemove = e => {
-    this.props.dispatch(removePie(this.props.pie.removeUrl));
+    this.props.removePie(this.props.pie.removeUrl);
   };
 
   render() {
@@ -44,7 +47,7 @@ class View extends Component {
     if (isFetching || !pie) {
       return (
         <div className="View">
-          <Loader active inline='centered' />
+          <Loader active inline="centered" />
         </div>
       );
     }
@@ -60,11 +63,18 @@ class View extends Component {
               Rated {pie.rating.avg}/5 from {pie.rating.total} reviews
             </Card.Description>
           </Card.Content>
-          {(pie.rateUrl || pie.removeUrl) &&
+          {(pie.rateUrl || pie.removeUrl) && (
             <Card.Content extra>
-              {pie.rateUrl && <Rating disabled={this.props.isRating} size='huge' maxRating={5} onRate={this.onRating} />}
-              {pie.removeUrl && <Button negative loading={this.props.isRemoving} floated='right' onClick={this.onRemove}>Remove</Button>}
-            </Card.Content>}
+              {pie.rateUrl && (
+                <Rating disabled={this.props.isRating} size="huge" maxRating={5} onRate={this.onRating} />
+              )}
+              {pie.removeUrl && (
+                <Button negative loading={this.props.isRemoving} floated="right" onClick={this.onRemove}>
+                  Remove
+                </Button>
+              )}
+            </Card.Content>
+          )}
         </Card>
       </div>
     );
@@ -80,4 +90,4 @@ const mapStateToProps = ({ view, pies, urls }, ownProps) => ({
   viewTemplateUrl: urls.viewTemplateUrl,
 });
 
-export default connect(mapStateToProps)(View);
+export default connect(mapStateToProps, { fetchPie, ratePie, removePie })(View);

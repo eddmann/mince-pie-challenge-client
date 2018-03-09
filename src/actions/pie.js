@@ -1,16 +1,12 @@
-/* global fetch */
-
-import { api, upload } from '../libs/request';
-import { push } from 'react-router-redux';
-
 export const loadUrls = (addUrl, browseUrl, viewTemplateUrl) => {
   return { type: 'LOAD_URLS', urls: { addUrl, browseUrl, viewTemplateUrl } };
 };
 
-export const fetchPies = path => dispatch => {
+export const fetchPies = path => (dispatch, getState, { request }) => {
   dispatch({ type: 'FETCH_PIES' });
 
-  api(path)
+  request
+    .api(path, 'GET')
     .then(json => {
       const pies = json._embedded.pies.map(pie => ({
         id: pie.id,
@@ -25,10 +21,11 @@ export const fetchPies = path => dispatch => {
     });
 };
 
-export const fetchPie = (path, id) => dispatch => {
+export const fetchPie = (path, id) => (dispatch, getState, { request }) => {
   dispatch({ type: 'FETCH_PIE' });
 
-  api(path.replace('{id}', id))
+  request
+    .api(path.replace('{id}', id), 'GET')
     .then(json => {
       const pie = {
         id: json.id,
@@ -48,15 +45,16 @@ export const fetchPie = (path, id) => dispatch => {
     });
 };
 
-export const addPie = (path, name) => dispatch => {
+export const addPie = (path, name) => (dispatch, getState, { request }) => {
   dispatch({ type: 'ADD_PIE' });
 
-  api(path, 'POST', { name })
+  request
+    .api(path, 'POST', { name })
     .then(json => {
       dispatch({
         type: 'ADD_PIE_SUCCESS',
         pendingPieId: json.id,
-        photoRequestUrl: json._links.photo.href
+        photoRequestUrl: json._links.photo.href,
       });
     })
     .catch(error => {
@@ -64,10 +62,11 @@ export const addPie = (path, name) => dispatch => {
     });
 };
 
-export const removePie = path => dispatch => {
+export const removePie = path => (dispatch, getState, { request, push }) => {
   dispatch({ type: 'REMOVE_PIE' });
 
-  api(path, 'DELETE')
+  request
+    .api(path, 'DELETE')
     .then(() => {
       dispatch({ type: 'REMOVE_PIE_SUCCESS' });
       dispatch(push('/'));
@@ -77,10 +76,11 @@ export const removePie = path => dispatch => {
     });
 };
 
-export const ratePie = (pieId, viewPath, ratePath, rating) => dispatch => {
+export const ratePie = (pieId, viewPath, ratePath, rating) => (dispatch, getState, { request }) => {
   dispatch({ type: 'RATE_PIE' });
 
-  api(ratePath, 'PUT', { rating })
+  request
+    .api(ratePath, 'PUT', { rating })
     .then(() => {
       dispatch({ type: 'RATE_PIE_SUCCESS' });
       dispatch(fetchPie(viewPath, pieId));
@@ -90,22 +90,15 @@ export const ratePie = (pieId, viewPath, ratePath, rating) => dispatch => {
     });
 };
 
-export const requestPhotoUpload = (path, fileExtension, contentType) => dispatch => {
-  dispatch({ type: 'REQUEST_PHOTO_UPLOAD' });
-
-  api(path, 'PUT', { fileExtension, contentType })
-    .then(json => {
-      dispatch({ type: 'REQUEST_PHOTO_UPLOAD_SUCCESS', photoUploadUrl: json.url });
-    })
-    .catch(error => {
-      dispatch({ type: 'REQUEST_PHOTO_UPLOAD_FAILURE', error: error.message });
-    });
-};
-
-export const uploadPhoto = (id, url, file) => dispatch => {
+export const uploadPhoto = (id, requestPath, image) => (dispatch, getState, { request, push }) => {
   dispatch({ type: 'UPLOAD_PHOTO' });
 
-  upload(url, file)
+  request
+    .api(requestPath, 'PUT', {
+      fileExtension: image.name.split('.').pop(),
+      contentType: image.type,
+    })
+    .then(({ url }) => request.upload(url, image))
     .then(() => {
       dispatch({ type: 'UPLOAD_PHOTO_SUCCESS' });
       dispatch(push(`/pies/${id}`));

@@ -4,13 +4,13 @@ import { getToken } from './auth';
 
 let endpoint = undefined;
 
-export const setBaseEndpoint = e => { endpoint = e; };
+export const setBaseEndpoint = e => {
+  endpoint = e;
+};
 
-const isType = (response, type) =>
-  response.headers.get('Content-Type') === type;
+const isType = (response, type) => response.headers.get('Content-Type') === type;
 
-const parseJson = r =>
-  isType(r, 'application/hal+json') ? r.json() : r.text();
+const parseJson = r => (isType(r, 'application/hal+json') ? r.json() : r.text());
 
 const handleError = r => {
   if (r.ok) return r;
@@ -32,19 +32,20 @@ const generateHeaders = (body, token) => {
   return headers;
 };
 
-export const api = (path, method = 'GET', body = undefined) =>
+export const api = (path, method, body = undefined) =>
   getToken()
-    .then(token => fetch(`${endpoint}${path}`, {
-      method,
-      headers: generateHeaders(body, token),
-      body: body && JSON.stringify(body),
-    }))
+    .then(token =>
+      fetch(`${endpoint}${path}`, {
+        method,
+        headers: generateHeaders(body, token),
+        body: body && JSON.stringify(body),
+      }),
+    )
     .then(handleError)
     .then(parseJson);
 
 export const upload = (url, file) =>
   fetch(url, {
     method: 'PUT',
-    body: file
-  })
-  .then(handleError);
+    body: file,
+  }).then(handleError);

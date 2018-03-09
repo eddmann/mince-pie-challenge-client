@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { Loader, Card, Rating, Image, Message } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
@@ -8,8 +8,10 @@ import { fetchPies } from '../actions/pie';
 import DummyImage from './DummyImage.png';
 import './Browse.css';
 
-class Browse extends Component {
+export class Browse extends Component {
   static propTypes = {
+    fetchPies: PropTypes.func.isRequired,
+    push: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
     pies: PropTypes.array.isRequired,
     browseUrl: PropTypes.string.isRequired,
@@ -17,18 +19,18 @@ class Browse extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(fetchPies(this.props.browseUrl));
+    this.props.fetchPies(this.props.browseUrl);
   }
 
   onViewPie = (e, { id }) => {
-    this.props.dispatch(push(`/pies/${id}`));
+    this.props.push(`/pies/${id}`);
   };
 
   render() {
     if (this.props.isFetching) {
       return (
         <div className="Browse">
-          <Loader active inline='centered' />
+          <Loader active inline="centered" />
         </div>
       );
     }
@@ -37,7 +39,7 @@ class Browse extends Component {
       <div className="Browse">
         {this.props.error && <Message error>{this.props.error}</Message>}
         <Card.Group itemsPerRow={4} doubling>
-          {this.props.pies.map(pie =>
+          {this.props.pies.map(pie => (
             <Card className="Pie" key={pie.id} fluid onClick={this.onViewPie} id={pie.id}>
               <Image src={pie.thumbnail || DummyImage} />
               <Card.Content>
@@ -47,7 +49,7 @@ class Browse extends Component {
                 </Card.Description>
               </Card.Content>
             </Card>
-          )}
+          ))}
         </Card.Group>
       </div>
     );
@@ -61,4 +63,4 @@ const mapStateToProps = ({ urls, browse, pies }) => ({
   error: browse.error,
 });
 
-export default connect(mapStateToProps)(Browse);
+export default connect(mapStateToProps, { fetchPies, push })(Browse);
