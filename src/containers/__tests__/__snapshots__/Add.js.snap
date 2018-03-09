@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`displays add errors 1`] = `
+<Message
+  error={true}
+>
+  Error
+</Message>
+`;
