@@ -1,5 +1,5 @@
 build:
-	docker-compose run --rm react-create-app rm -fr node_modules && npm install
+	docker-compose run --rm react-create-app npm install
 
 test:
 	docker-compose run --rm react-create-app npm test
